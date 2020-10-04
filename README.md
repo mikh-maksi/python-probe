@@ -36,6 +36,7 @@ c.create_rectangle(20, 20, 40, 40, fill="#FF0000")
 ```
 <img src = "img/Canvas2.jpg">
 
+## Яблочко в случайной позиуии
 ```python
 #Позиция яблочка
 posx = 20 * random.randint(1, (400-20) / 20)
@@ -45,3 +46,4 @@ posy = 20 * random.randint(1, (400-20) / 20)
 #Отрисовка яблочка
 BLOCK = c.create_oval(posx, posy,posx+20, posy+20,fill="yellow")
 ```
+<img src = "img/Canvas3.jpg">
