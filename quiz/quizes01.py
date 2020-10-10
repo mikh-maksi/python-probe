@@ -1,4 +1,3 @@
-
 answer = input("Какой язык самый популярный:\n 1. JavaScript \n 2. Python \n 3. Java \n 4. C#\n")
 
 
