@@ -72,7 +72,7 @@ right = 3
 def clicked(event):
     print(event.x)
     print(event.y)
- 
+    global result
     if event.x>0 and event.x<400 and event.y>200 and event.y<300:
        userAnswer = 1
     
@@ -117,13 +117,6 @@ def nextQuestion(event):
         c.itemconfigure(answer_text3,  text=dicts[nQuestion].get('answer3'))
         c.itemconfigure(answer_text4,  text=dicts[nQuestion].get('answer4'))
 
-    print(nQuestion)
-    print(dicts[nQuestion])
-    
-    
-
-
-
 
 c.tag_bind(answer_text1, "<Button-1>", clicked)
 c.tag_bind(answer_text2, "<Button-1>", clicked)
@@ -132,15 +125,6 @@ c.tag_bind(answer_text4, "<Button-1>", clicked)
 
 
 c.tag_bind(next_question, "<Button-1>", nextQuestion)
-
-'''
-result = 0
-for dct in dicts:
-    answ = f"{dct['question']}\n 1. {dct['answer1']} | 2. {dct['answer2']} | 3. {dct['answer3']} | 4. {dct['answer4']} \n"
-    answer =input(answ)
-    if answer == dct['right']:
-        result += 1
-'''
 
 
 

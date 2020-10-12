@@ -136,3 +136,278 @@ abiturs.append(abitur)
 for ab in abiturs
     print(f"{ab.fio}, {ab.year}, {ab.mark1}, {ab.mark2}")
 ```
+## Викторина в консоли
+```python
+answer = input("Какой язык самый популярный:\n 1. JavaScript \n 2. Python \n 3. Java \n 4. C#\n")
+
+
+if answer == "1":
+    print("Правильный ответ")
+else:
+    print("Не правильный ответ")
+
+
+answer = input("Какая средняя зарплата Python-Разработчика:\n 1. 2000 \n 2. 1500 \n 3. 2500 \n 4. 3000\n")
+if answer == "3":
+    print("Правильный ответ")
+else:
+    print("Не правильный ответ")
+
+answer = input("Какая доля Python-разработки в Украине на 2020 год:\n 1. 25% \n 2. 12,4% \n 3. 13,2% \n 4. 17,1%\n")
+if answer == "3":
+    print("Правильный ответ")
+else:
+    print("Не правильный ответ")
+```
+<img src = "img/repl5.jpg">  
+
+## Викторина в консоли с циклами
+```python
+dicts = []
+
+q = {'question':"Какой язык самый популярный:",'answer1':"JavaScript",'answer2':"Python",'answer3':"Java",'answer4':"C#",'right':'1'}
+dicts.append(q)
+q = {'question':"Какая средняя зарплата Python-Разработчика:",'answer1':"1500",'answer2':"2000",'answer3':"2500",'answer4':"3000",'right':'3'}
+dicts.append(q)
+q = {'question':"Какая доля Python-разработки в Украине на 2020 год:",'answer1':"25%",'answer2':"12,4%",'answer3':"13,2%",'answer4':"17,1%",'right':'3'}
+dicts.append(q)
+
+
+result = 0
+for dct in dicts:
+    answ = f"{dct['question']}\n 1. {dct['answer1']} | 2. {dct['answer2']} | 3. {dct['answer3']} | 4. {dct['answer4']} \n"
+    answer =input(answ)
+    if answer == dct['right']:
+        result += 1
+
+print(f"Ваш результат: {result} из 3")
+```
+<img src = "img/repl6.jpg">  
+
+## Графические элементы для викторины
+```python
+from tkinter import Tk, Canvas
+import random
+
+# Globals
+WIDTH = 400
+HEIGHT = 400
+
+root = Tk()
+root.title("PythonicWay Quiz")
+
+c = Canvas(root, width=800, height=400, bg="white")
+c.grid()
+restart_text = c.create_text(400, 50,
+                             font='Arial 20',
+                             fill='black',
+                             text="Текст вопроса ",
+                             state='hidden'
+                            )
+
+right_answer = c.create_text(400, 150,
+                             font='Arial 20',
+                             fill='green',
+                             text="Правильный ответ ",
+                             state='hidden'
+                            )
+
+wrong_answer = c.create_text(400, 150,
+                             font='Arial 20',
+                             fill='red',
+                             text="Не правильный ответ ",
+                             state='hidden'
+                            )
+
+rect1 = c.create_rectangle(0,200,400,300,fill='orange')
+rect2 = c.create_rectangle(400,200,800,300,fill='pink')
+rect3 = c.create_rectangle(0,300,400,400,fill='blue')
+rect4 = c.create_rectangle(400,300,800,400,fill='yellow')
+
+answer_text1 = c.create_text(200, 250,font='Arial 30', fill='black', text="Ответ 1", state='normal', activefill = 'bisque', justify = "center")
+answer_text2 = c.create_text(600, 250,font='Arial 30', fill='black', text="Ответ 2", state='normal', activefill = 'bisque', justify = "left")
+answer_text3 = c.create_text(200, 350,font='Arial 30', fill='black', text="Ответ 3", state='normal', activefill = 'bisque')
+answer_text4 = c.create_text(600, 350,font='Arial 30', fill='black', text="Ответ 4", state='normal', activefill = 'bisque')
+
+next_question = c.create_text(680, 180,
+                             font='Arial 15',
+                             fill='green',
+                             text="Следующий вопрос ->",
+                             state='hidden'
+                            )
+
+c.itemconfigure(restart_text, state='normal')
+
+right = 3
+def clicked(event):
+    print(event.x)
+    print(event.y)
+ 
+    if event.x>0 and event.x<400 and event.y>200 and event.y<300:
+       userAnswer = 1
+    
+    if event.x>400 and event.x<800 and event.y>200 and event.y<300:
+        userAnswer = 2
+
+    if event.x>0 and event.x<400 and event.y>300 and event.y<400:
+        userAnswer = 3
+
+    if event.x>400 and event.x<800 and event.y>300 and event.y<400:
+        userAnswer = 4
+
+    if right == userAnswer:
+        c.itemconfigure(wrong_answer, state='hidden')
+        c.itemconfigure(right_answer, state='normal')
+    else:
+        c.itemconfigure(right_answer, state='hidden')
+        c.itemconfigure(wrong_answer, state='normal')
+
+    c.itemconfigure(next_question, state='normal')
+
+def nextQuestion(event):
+    print("NextQuestion")
+
+
+c.tag_bind(answer_text1, "<Button-1>", clicked)
+c.tag_bind(answer_text2, "<Button-1>", clicked)
+c.tag_bind(answer_text3, "<Button-1>", clicked)
+c.tag_bind(answer_text4, "<Button-1>", clicked)
+
+c.tag_bind(next_question, "<Button-1>", nextQuestion)
+
+root.mainloop()
+
+```
+<img src = "img/repl7.jpg">  
+<img src = "img/repl8.jpg">  
+<img src = "img/repl9.jpg">  
+
+## Итоговая виторина
+```python
+from tkinter import Tk, Canvas
+import random
+
+
+
+dicts = []
+
+q = {'question':"Какой язык самый популярный:",'answer1':"JavaScript",'answer2':"Python",'answer3':"Java",'answer4':"C#",'right':1}
+dicts.append(q)
+q = {'question':"Какая доля Python:",'answer1':"12%",'answer2':"13,2%",'answer3':"15%",'answer4':"50%",'right':2}
+dicts.append(q)
+q = {'question':"Сколько в среденем зарабатывает Python-разработчик:",'answer1':"$1500",'answer2':"$2000",'answer3':"$2500",'answer4':"$2500",'right':3}
+dicts.append(q)
+nQuestion = 0
+allQuestion = 3
+result = 0
+
+
+# Globals
+WIDTH = 400
+HEIGHT = 400
+
+root = Tk()
+root.title("PythonicWay Quiz")
+
+c = Canvas(root, width=800, height=400, bg="white")
+c.grid()
+restart_text = c.create_text(400, 50,
+                             font='Arial 20',
+                             fill='black',
+                             text=dicts[nQuestion].get('question'),
+                             state='hidden'
+                            )
+
+right_answer = c.create_text(400, 150,
+                             font='Arial 20',
+                             fill='green',
+                             text="Правильный ответ ",
+                             state='hidden'
+                            )
+
+wrong_answer = c.create_text(400, 150,
+                             font='Arial 20',
+                             fill='red',
+                             text="Не правильный ответ ",
+                             state='hidden'
+                            )
+
+rect1 = c.create_rectangle(0,200,400,300,fill='orange')
+rect2 = c.create_rectangle(400,200,800,300,fill='pink')
+rect3 = c.create_rectangle(0,300,400,400,fill='blue')
+rect4 = c.create_rectangle(400,300,800,400,fill='yellow')
+
+answer_text1 = c.create_text(200, 250,font='Arial 30', fill='black', text=dicts[nQuestion].get('answer1'), state='normal', activefill = 'bisque', justify = "center")
+answer_text2 = c.create_text(600, 250,font='Arial 30', fill='black', text=dicts[nQuestion].get('answer2'), state='normal', activefill = 'bisque', justify = "left")
+answer_text3 = c.create_text(200, 350,font='Arial 30', fill='black', text=dicts[nQuestion].get('answer3'), state='normal', activefill = 'bisque')
+answer_text4 = c.create_text(600, 350,font='Arial 30', fill='black', text=dicts[nQuestion].get('answer4'), state='normal', activefill = 'bisque')
+
+next_question = c.create_text(680, 180,
+                             font='Arial 15',
+                             fill='green',
+                             text="Следующий вопрос ->",
+                             state='hidden'
+                            )
+
+c.itemconfigure(restart_text, state='normal')
+
+right = 3
+def clicked(event):
+    print(event.x)
+    print(event.y)
+    global result
+    if event.x>0 and event.x<400 and event.y>200 and event.y<300:
+       userAnswer = 1
+    
+    if event.x>400 and event.x<800 and event.y>200 and event.y<300:
+        userAnswer = 2
+
+    if event.x>0 and event.x<400 and event.y>300 and event.y<400:
+        userAnswer = 3
+
+    if event.x>400 and event.x<800 and event.y>300 and event.y<400:
+        userAnswer = 4
+
+    if dicts[nQuestion].get('right') == userAnswer:
+        c.itemconfigure(wrong_answer, state='hidden')
+        c.itemconfigure(right_answer, state='normal')
+        result+=1
+    else:
+        c.itemconfigure(right_answer, state='hidden')
+        c.itemconfigure(wrong_answer, state='normal')
+
+    c.itemconfigure(next_question, state='normal')
+    
+def nextQuestion(event):
+    print("NextQuestion")
+    global nQuestion 
+    nQuestion +=1
+    c.itemconfigure(right_answer, state='hidden')
+    c.itemconfigure(wrong_answer, state='hidden')
+    if nQuestion == allQuestion:
+        result_answer = c.create_text(400, 150,
+                             font='Arial 20',
+                             fill='red',
+                             text=f"Итоговый результат:{result} из {allQuestion}",
+                             state='normal'
+                            )
+    else:
+        c.itemconfigure(restart_text,  text=dicts[nQuestion].get('question'))
+        c.itemconfigure(answer_text1,  text=dicts[nQuestion].get('answer1'))
+        c.itemconfigure(answer_text2,  text=dicts[nQuestion].get('answer2'))
+        c.itemconfigure(answer_text3,  text=dicts[nQuestion].get('answer3'))
+        c.itemconfigure(answer_text4,  text=dicts[nQuestion].get('answer4'))
+
+c.tag_bind(answer_text1, "<Button-1>", clicked)
+c.tag_bind(answer_text2, "<Button-1>", clicked)
+c.tag_bind(answer_text3, "<Button-1>", clicked)
+c.tag_bind(answer_text4, "<Button-1>", clicked)
+
+c.tag_bind(next_question, "<Button-1>", nextQuestion)
+
+root.mainloop()
+
+```
+<img src = "img/repl10.jpg">  
+<img src = "img/repl12.jpg">  
+<img src = "img/repl13.jpg">  

@@ -13,7 +13,7 @@ c.grid()
 restart_text = c.create_text(400, 50,
                              font='Arial 20',
                              fill='black',
-                             text="Текст вопроса Текст вопроса Текст вопроса Текст вопроса ",
+                             text="Текст вопроса ",
                              state='hidden'
                             )
 
@@ -39,9 +39,9 @@ rect2 = c.create_rectangle(400,200,800,300,fill='pink')
 rect3 = c.create_rectangle(0,300,400,400,fill='blue')
 rect4 = c.create_rectangle(400,300,800,400,fill='yellow')
 
-answer_text1 = c.create_text(200, 250,font='Arial 30', fill='black', text="12345", state='normal', activefill = 'bisque', justify = "center")
-answer_text2 = c.create_text(600, 250,font='Arial 30', fill='black', text="123456789067890", state='normal', activefill = 'bisque', justify = "left")
-answer_text3 = c.create_text(200, 350,font='Arial 30', fill='black', text="123456789012345", state='normal', activefill = 'bisque')
+answer_text1 = c.create_text(200, 250,font='Arial 30', fill='black', text="Ответ 1", state='normal', activefill = 'bisque', justify = "center")
+answer_text2 = c.create_text(600, 250,font='Arial 30', fill='black', text="Ответ 2", state='normal', activefill = 'bisque', justify = "left")
+answer_text3 = c.create_text(200, 350,font='Arial 30', fill='black', text="Ответ 3", state='normal', activefill = 'bisque')
 answer_text4 = c.create_text(600, 350,font='Arial 30', fill='black', text="Ответ 4", state='normal', activefill = 'bisque')
 
 next_question = c.create_text(680, 180,
