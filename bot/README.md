@@ -193,4 +193,23 @@ while 1:
 <img src = "img/pythonanywhere15.jpg">  
 Пишем ему команду и получаем ответ.
 
+У нас получился "эхо-бот" - т.е. бот, который повторяет то, что пишет пользователь.
+Далее - мы напишем код, который позволяет сделать бота, который отвечает на определенные фразы, которые пишет пользователь.
+```python
+import telebot
 
+bot = telebot.TeleBot('1266186894:AAHfo8QfLzXf4LInnwXiAO6_DuXrVFVkQ7M')
+
+@bot.message_handler(commands=['start'])
+def start_message(message):
+    bot.send_message(message.chat.id, 'Привет, ты написал мне /start')
+
+@bot.message_handler(content_types=['text'])
+def send_text(message):
+    if message.text.lower() == 'привет':
+        bot.send_message(message.chat.id, 'Привет, мой создатель')
+    elif message.text.lower() == 'пока':
+        bot.send_message(message.chat.id, 'Прощай, создатель')
+
+bot.polling()
+```
