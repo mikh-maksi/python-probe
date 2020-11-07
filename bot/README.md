@@ -143,7 +143,7 @@ if a > 0:   #Если число a больше 0
 <img src = "img/pythonanywhere8.jpg">  
 
 Устанавливаем модуль telepot (Нужен для работы с ботами)
-
+pip3.6 install --user telepot
 <img src = "img/pythonanywhere9.jpg">  
 
 Модуль telepot - установлен
