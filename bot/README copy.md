@@ -143,7 +143,7 @@ if a > 0:   #Если число a больше 0
 <img src = "img/pythonanywhere8.jpg">  
 
 Устанавливаем модуль telepot (Нужен для работы с ботами)
-pip3 install python-telegram-bot --upgrade
+pip3.6 install --user telepot
 <img src = "img/pythonanywhere9.jpg">  
 
 Модуль telepot - установлен
@@ -151,21 +151,35 @@ pip3 install python-telegram-bot --upgrade
 
 Добавляем код бота 
 ```python
-from telegram.ext import Updater, MessageHandler, Filters
+#!/usr/bin/python3.6
+import telepot
+import time
+import urllib3
 
-def echo(update, context):
-    string_in = update.message.text
-    string_out = string_in
-    update.message.reply_text(string_out)
+# Начало служебных Настроек. Только для бесплатных аккаунтов
+proxy_url = "http://proxy.server:3128"
+telepot.api._pools = {
+    'default': urllib3.ProxyManager(proxy_url=proxy_url, num_pools=3, maxsize=10, retries=False, timeout=30),
+}
+telepot.api._onetime_pool_spec = (urllib3.ProxyManager, dict(proxy_url=proxy_url, num_pools=1, maxsize=1, retries=False, timeout=30))
+# Конец служебных Настроек. Только для бесплатных аккаунтов
 
-updater = Updater("")
+bot = telepot.Bot('1266186894:AAHfo8QfLzXf4LInnwXiAO6_DuXrVFVkQ7M') #Между апострофами ставим сохраненный код доступа к боту
 
-dispatcher = updater.dispatcher
+def handle(msg):
+    content_type, chat_type, chat_id = telepot.glance(msg)
+    print(content_type, chat_type, chat_id)
 
-dispatcher.add_handler(MessageHandler(Filters.all, echo))
+    if content_type == 'text':
+        bot.sendMessage(chat_id, "You said '{}'".format(msg["text"])) # Бот на всё будет отвечать You said 'текст вашего сообщения'
 
-updater.start_polling()
-updater.idle()
+bot.message_loop(handle)
+
+print ('Listening ...')
+
+# Позволяет программе работать
+while 1:
+    time.sleep(10)
 ```
 <img src = "img/pythonanywhere10.jpg">  
 
