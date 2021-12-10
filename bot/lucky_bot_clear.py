@@ -17,7 +17,7 @@ def button(update, context):
     context.bot.send_photo(chat_id=update.effective_chat.id, photo=random.choice(img) ,reply_markup=keyboard)
 
 # підключення до боту
-updater = Updater("5030694279:AAFo8CEWbTCLaDPrPBIFfx-cws8fMTOfFfs")
+updater = Updater("")
 
 # обробка команди /start
 updater.dispatcher.add_handler(CommandHandler('start', start))
