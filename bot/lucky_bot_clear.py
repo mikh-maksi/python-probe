@@ -1,3 +1,4 @@
+```python
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackQueryHandler
 
@@ -27,3 +28,4 @@ updater.dispatcher.add_handler(CallbackQueryHandler(button))
 # команди запуску бота
 updater.start_polling()
 updater.idle()
+```
