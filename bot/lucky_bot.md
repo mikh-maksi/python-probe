@@ -1,7 +1,7 @@
 # LuckyBot
 ```python
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, CallbackContext, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, CallbackContext
 
 import random
 
