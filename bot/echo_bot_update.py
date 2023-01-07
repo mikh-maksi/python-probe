@@ -1,4 +1,4 @@
-from telegram.ext import Application, Updater, MessageHandler, filters
+from telegram.ext import Application, MessageHandler, filters
 
 async def echo(update, context):
     string_in = update.message.text
